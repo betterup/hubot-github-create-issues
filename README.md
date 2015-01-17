@@ -38,5 +38,5 @@ Enter your Github password when prompted. When you get a response, look for the 
 ## Hubot Commands
 
 ```
-hubot issues create for [user/]repo #label1,#label2 Something is going wrong
+hubot issues create for [user/]repo #label1,#label2 Something is going wrong - Some details
 ```

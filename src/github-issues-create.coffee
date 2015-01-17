@@ -2,7 +2,7 @@
 #   Create issues with hubot
 #
 # Commands:
-#   hubot create issue {user}/{repo} #label1,label2# <content> - Close the specified issue
+#   hubot issues create for {user}/{repo} #label1,label2# <title> - <content> → Create a given issue
 #
 # Author:
 #   Soulou

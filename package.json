@@ -1,6 +1,6 @@
 {
   "name": "hubot-github-create-issues",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Create issues with your Hubot !",
   "author": "Léo Unbekandt <leo@scalingo.com>",
   "license": "MIT",
