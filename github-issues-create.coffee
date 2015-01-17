@@ -28,13 +28,11 @@ module.exports = (robot) ->
 
   robot.respond /create issue (for\s)?(([-_\.0-9a-z]+\/)?[-_\.0-9a-z]+) (in\s[a-z0-9]+\s)?(#[a-z0-9, ]+#\s)?([^-]+)(-\s.+)?/i, (res) ->
     repo = githubot.qualified_repo res.match[2]
-    payload = {body: ""}
+    payload = {}
     payload.milestone = parseMilestone res.match[4]
     payload.labels = parseLabels res.match[5]
     payload.title = res.match[6].trim()
     payload.body = parseBody res.match[7]
-    console.log(res.match)
-    console.log(payload.body)
     url  = "/repos/#{repo}/issues"
     user = res.envelope.user.name
 
