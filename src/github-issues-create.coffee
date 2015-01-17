@@ -26,7 +26,7 @@ module.exports = (robot) ->
   parseBody = (rawBody) ->
     if rawBody then rawBody.slice(2).trim() else rawBody
 
-  robot.respond /create issue (for\s)?(([-_\.0-9a-z]+\/)?[-_\.0-9a-z]+) (in\s[a-z0-9]+\s)?(#[a-z0-9, ]+#\s)?([^-]+)(-\s.+)?/i, (res) ->
+  robot.respond /issues create (for\s)?(([-_\.0-9a-z]+\/)?[-_\.0-9a-z]+) (in\s[a-z0-9]+\s)?(#[a-z0-9, ]+#\s)?([^-]+)(-\s.+)?/i, (res) ->
     repo = githubot.qualified_repo res.match[2]
     payload = {body: ""}
     payload.milestone = parseMilestone res.match[4]
