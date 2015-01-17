@@ -1,6 +1,6 @@
 {
   "name": "hubot-github-create-issues",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Create issues with your Hubot !",
   "author": "Léo Unbekandt <leo@scalingo.com>",
   "license": "MIT",
@@ -11,10 +11,10 @@
   "keywords": "hubot, hubot-scripts, github",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Scalingo/hubot-github-create-issues.git"
+    "url": "git://github.com/Soulou/hubot-github-create-issues.git"
   },
   "bugs": {
-    "url": "https://github.com/Scalingo/hubot-github-create-issues/issues"
+    "url": "https://github.com/Soulou/hubot-github-create-issues/issues"
   },
   "dependencies": {
     "coffee-script": "~1.6",
