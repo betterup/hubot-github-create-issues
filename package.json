@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "index.coffee",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "keywords": "hubot, hubot-scripts, github",
   "repository": {
@@ -17,13 +17,16 @@
     "url": "https://github.com/Soulou/hubot-github-create-issues/issues"
   },
   "dependencies": {
-    "coffee-script": "~1.6",
-    "githubot": "^1.0.0-beta2"
-  },
-  "peerDependencies": {
-    "hubot": "2.x"
+    "githubot": "^1.0.0-beta2",
+    "hubot-github-identity": "^0.10.0"
   },
   "devDependencies": {
-    "hubot": "2.x"
+    "hubot": "2.x",
+    "coffee-script": "1.7.x",
+    "hubot-test-helper": "*",
+    "chai": "1.x",
+    "mocha": "1.x",
+    "sinon": "*",
+    "nock": "9.x"
   }
 }
