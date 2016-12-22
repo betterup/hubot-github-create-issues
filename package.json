@@ -18,7 +18,9 @@
   },
   "dependencies": {
     "githubot": "^1.0.0-beta2",
-    "hubot-github-identity": "^0.10.0"
+    "hubot-github-identity": "^0.10.0",
+    "cli-argparse": "1.1.x",
+    "shell-quote": "1.6.x"
   },
   "devDependencies": {
     "hubot": "2.x",
