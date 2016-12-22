@@ -42,10 +42,9 @@ module.exports = function(robot) {
     }
   };
   robot.respond(/issues create /i, function(res) {
-    var match, payload, repo, user;
-    match = res.message.text.match(/issues create (for\s)?(([-_\.0-9a-z]+\/)?[-_\.0-9a-z]+) (in\s[a-z0-9]+\s)?(#[a-z0-9, ]+#\s)?([^-]+)(\s-\s.+)?/i);
-    repo = githubot.qualified_repo(match[2]);
-    payload = {
+    var match = res.message.text.match(/issues create (for\s)?(([-_\.0-9a-z]+\/)?[-_\.0-9a-z]+) (in\s[a-z0-9]+\s)?(#[a-z0-9, ]+#\s)?([^-]+)(\s-\s.+)?/i);
+    var repo = githubot.qualified_repo(match[2]);
+    var payload = {
       body: ""
     };
     payload.milestone = parseMilestone(match[4]);
@@ -53,7 +52,7 @@ module.exports = function(robot) {
     payload.title = match[6].trim();
     payload.body = parseBody(match[7]);
     console.log(payload);
-    user = res.envelope.user.name;
+    var user = res.envelope.user.name;
     robot.identity.findToken(user, function(err, token) {
       if (err) {
         handleTokenError(res, err);
