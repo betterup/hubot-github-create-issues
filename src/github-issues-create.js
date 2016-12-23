@@ -27,12 +27,12 @@ module.exports = function(robot) {
   parseIssue = function(message) {
     var args = parse(message);
     var result = parseArgs(args);
-    var args = result.options;
+    var options = result.options;
     var payload = {};
     payload.title = result.unparsed.join(' ');
-    payload.milestone = args.milestone;
-    payload.body = args.body;
-    payload.labels = (args.labels || '').split(',').map(function (s) { return s.trim(); } );
+    payload.milestone = options.milestone;
+    payload.body = options.body;
+    payload.labels = (options.labels || '').split(',').map(function (s) { return s.trim(); } );
     return payload;
   };
 
