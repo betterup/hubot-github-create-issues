@@ -32,7 +32,7 @@ module.exports = function(robot) {
     payload.title = result.unparsed.join(' ');
     payload.milestone = args.milestone;
     payload.body = args.body;
-    payload.labels = (args.labels || '').split(',');
+    payload.labels = (args.labels || '').split(',').map(function (s) { return s.trim(); } );
     return payload;
   };
 

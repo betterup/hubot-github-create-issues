@@ -74,7 +74,7 @@ describe('github-issues-create', function() {
   });
 
   describe('when message has labels', function() {
-    var message = 'hubot issues create myproject some title --labels="foo bar,baz"';
+    var message = 'hubot issues create myproject some title --labels="foo bar, baz"';
     beforeEach(function(done) {
       nock('https://api.github.com').
         post('/repos/mycompany/myproject/issues', {

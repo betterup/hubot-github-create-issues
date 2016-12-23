@@ -19,7 +19,14 @@ Then add **hubot-github-create-issues** to your `external-scripts.json`:
 ## Hubot Commands
 
 ```
-hubot issues create for [user/]repo Something is going wrong --labels bug --body issue description here
+# create issue
+hubot issues create myproject Something is going wrong
+
+# create issue with labels
+hubot issues create myproject Something is going wrong --labels bug
+
+# create issue with issue body
+hubot issues create myproject Something is going wrong --body more details here
 ```
 
 ## Configuration
