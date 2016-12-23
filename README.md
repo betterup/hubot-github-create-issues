@@ -4,7 +4,9 @@ A script to create github issues Hubot
 
 ## Installation
 
-In hubot project repo, run:
+First, install [hubot-github-identity](https://github.com/tombell/hubot-github-identity).
+
+Then In hubot project repo, run:
 
 ```
 npm install hubot-github-create-issues --save
