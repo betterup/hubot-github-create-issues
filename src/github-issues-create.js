@@ -52,7 +52,7 @@ module.exports = function(robot) {
         });
         var url = "/repos/" + repo + "/issues";
         github.post(url, payload, function(issue) {
-          res.reply("I've opened issue #" + issue.number + " for you\n" + issue.html_url);
+          res.reply("I've opened issue " + repo + '#' + issue.number + " for you\n" + issue.html_url);
         });
       }
     });

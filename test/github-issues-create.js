@@ -45,7 +45,7 @@ describe('github-issues-create', function() {
     it('fires listener', function() {
       expect(room.messages).to.deep.equal([
         ['alice', message],
-        ['hubot', "@alice I've opened issue #123 for you\nhttps://fake-github-url/some/path"]
+        ['hubot', "@alice I've opened issue mycompany/myproject#123 for you\nhttps://fake-github-url/some/path"]
       ]);
     });
   });
@@ -68,7 +68,7 @@ describe('github-issues-create', function() {
     it('fires listener', function() {
       expect(room.messages).to.deep.equal([
         ['alice', message],
-        ['hubot', "@alice I've opened issue #123 for you\nhttps://fake-github-url/some/path"]
+        ['hubot', "@alice I've opened issue mycompany/myproject#123 for you\nhttps://fake-github-url/some/path"]
       ]);
     });
   });
@@ -91,7 +91,7 @@ describe('github-issues-create', function() {
     it('fires listener', function() {
       expect(room.messages).to.deep.equal([
         ['alice', message],
-        ['hubot', "@alice I've opened issue #123 for you\nhttps://fake-github-url/some/path"]
+        ['hubot', "@alice I've opened issue mycompany/myproject#123 for you\nhttps://fake-github-url/some/path"]
       ]);
     });
   });
@@ -114,7 +114,7 @@ describe('github-issues-create', function() {
     it('fires listener', function() {
       expect(room.messages).to.deep.equal([
         ['alice', message],
-        ['hubot', "@alice I've opened issue #123 for you\nhttps://fake-github-url/some/path"]
+        ['hubot', "@alice I've opened issue mycompany/myproject#123 for you\nhttps://fake-github-url/some/path"]
       ]);
     });
   });
