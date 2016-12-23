@@ -18,7 +18,7 @@ module.exports = function(robot) {
       case 'redis':
         res.reply("Oops: " + err);
       case 'github user':
-        auth_url = process.env.HEROKU_URL + "/github/identity";
+        auth_url = process.env.HUBUT_HOSTNAME + "/github/identity";
         res.reply("Sorry, you haven't told me your GitHub username.  Enter your Github API token at " + auth_url + " and then tell me who you are\n\n> " + robot.name + " I am GITHUB_USERNAME");
     }
   };
