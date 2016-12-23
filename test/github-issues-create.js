@@ -32,7 +32,9 @@ describe('github-issues-create', function() {
     var message = 'hubot issues create myproject some title';
     beforeEach(function(done) {
       nock('https://api.github.com').
-        post('/repos/mycompany/myproject/issues').
+        post('/repos/mycompany/myproject/issues', {
+          title: 'some title'
+        }).
         reply(201, {
           number: 123,
           html_url: 'https://fake-github-url/some/path'
@@ -43,7 +45,76 @@ describe('github-issues-create', function() {
     it('fires listener', function() {
       expect(room.messages).to.deep.equal([
         ['alice', message],
-        ['hubot', "@alice I've opened issue #123 for you\nhttps://fake-github-url/some/path"]
+        ['hubot', "@alice I've opened issue mycompany/myproject#123 for you\nhttps://fake-github-url/some/path"]
+      ]);
+    });
+  });
+
+  describe('when message has milestone', function() {
+    var message = 'hubot issues create myproject some title --milestone="v1.0"';
+    beforeEach(function(done) {
+      nock('https://api.github.com').
+        post('/repos/mycompany/myproject/issues', {
+          title: 'some title',
+          milestone: "v1.0"
+        }).
+        reply(201, {
+          number: 123,
+          html_url: 'https://fake-github-url/some/path'
+        });
+      room.user.say('alice',  message);
+      setTimeout(done, 100);
+    });
+    it('fires listener', function() {
+      expect(room.messages).to.deep.equal([
+        ['alice', message],
+        ['hubot', "@alice I've opened issue mycompany/myproject#123 for you\nhttps://fake-github-url/some/path"]
+      ]);
+    });
+  });
+
+  describe('when message has labels', function() {
+    var message = 'hubot issues create myproject some title --labels="foo bar, baz"';
+    beforeEach(function(done) {
+      nock('https://api.github.com').
+        post('/repos/mycompany/myproject/issues', {
+          title: 'some title',
+          labels: ['foo bar', 'baz']
+        }).
+        reply(201, {
+          number: 123,
+          html_url: 'https://fake-github-url/some/path'
+        });
+      room.user.say('alice',  message);
+      setTimeout(done, 100);
+    });
+    it('fires listener', function() {
+      expect(room.messages).to.deep.equal([
+        ['alice', message],
+        ['hubot', "@alice I've opened issue mycompany/myproject#123 for you\nhttps://fake-github-url/some/path"]
+      ]);
+    });
+  });
+
+  describe('when message has multiline body', function() {
+    var message = 'hubot issues create myproject some title --body="multiline\nbody"';
+    beforeEach(function(done) {
+      nock('https://api.github.com').
+        post('/repos/mycompany/myproject/issues', {
+          title: 'some title',
+          body: "multiline\nbody"
+        }).
+        reply(201, {
+          number: 123,
+          html_url: 'https://fake-github-url/some/path'
+        });
+      room.user.say('alice',  message);
+      setTimeout(done, 100);
+    });
+    it('fires listener', function() {
+      expect(room.messages).to.deep.equal([
+        ['alice', message],
+        ['hubot', "@alice I've opened issue mycompany/myproject#123 for you\nhttps://fake-github-url/some/path"]
       ]);
     });
   });
