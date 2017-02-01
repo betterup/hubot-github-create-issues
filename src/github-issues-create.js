@@ -23,17 +23,39 @@ module.exports = function(robot) {
     }
   };
 
+  // @param input string or array of strings
+  // @return array of compacted and trimmed strings
+  parseLabels = function(input) {
+    var labels = [];
+    if (input.constructor === Array) {
+      labels = input;
+    } else {
+      labels = [input];
+    }
+    return labels.map(function (s) { return s.trim(); } );
+  };
+
   // parse message input into github issue payload
   parseIssue = function(message) {
     var args = parse(message);
-    var result = parseArgs(args);
+    var parseOpts = {
+      options: [
+        '-l',
+        '--label'
+      ],
+      alias: {
+        '-l': 'label'
+      }
+    };
+    var result = parseArgs(args, parseOpts);
     var options = result.options;
+    console.log(result, options);
     var payload = {};
     payload.title = result.unparsed.join(' ');
     payload.milestone = options.milestone;
     payload.body = options.body;
-    if (options.labels) {
-      payload.labels = options.labels.split(',').map(function (s) { return s.trim(); } );
+    if (options.label) {
+      payload.labels = parseLabels(options.label);
     }
     return payload;
   };

@@ -73,8 +73,31 @@ describe('github-issues-create', function() {
     });
   });
 
-  describe('when message has labels', function() {
-    var message = 'hubot issues create myproject some title --labels="foo bar, baz"';
+  describe('when message has single label option', function() {
+    var message = 'hubot issues create myproject some title --label="foo bar"';
+    beforeEach(function(done) {
+      nock('https://api.github.com').
+        post('/repos/mycompany/myproject/issues', {
+          title: 'some title',
+          labels: ['foo bar']
+        }).
+        reply(201, {
+          number: 123,
+          html_url: 'https://fake-github-url/some/path'
+        });
+      room.user.say('alice',  message);
+      setTimeout(done, 100);
+    });
+    it('fires listener', function() {
+      expect(room.messages).to.deep.equal([
+        ['alice', message],
+        ['hubot', "@alice I've opened issue mycompany/myproject#123 for you\nhttps://fake-github-url/some/path"]
+      ]);
+    });
+  });
+
+  describe('when message has multiple label options', function() {
+    var message = 'hubot issues create myproject -l="foo bar" -l baz some title';
     beforeEach(function(done) {
       nock('https://api.github.com').
         post('/repos/mycompany/myproject/issues', {
