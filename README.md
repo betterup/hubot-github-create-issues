@@ -25,7 +25,8 @@ Then add **hubot-github-create-issues** to your `external-scripts.json`:
 hubot issues create myproject Something is going wrong
 
 # create issue with labels
-hubot issues create myproject Something is going wrong --labels bug
+hubot issues create myproject Something is going wrong --label bug --label important
+hubot issues create myproject Something is going wrong -l bug -l important
 
 # create issue with issue body
 hubot issues create myproject Something is going wrong --body more details here
