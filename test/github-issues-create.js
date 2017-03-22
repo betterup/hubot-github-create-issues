@@ -141,4 +141,27 @@ describe('github-issues-create', function() {
       ]);
     });
   });
+
+  describe('when message has Slack auto-corrects', function() {
+    var message = 'hubot issues create myproject some title —body=“body”';
+    beforeEach(function(done) {
+      nock('https://api.github.com').
+        post('/repos/mycompany/myproject/issues', {
+          title: 'some title',
+          body: "body"
+        }).
+        reply(201, {
+          number: 123,
+          html_url: 'https://fake-github-url/some/path'
+        });
+      room.user.say('alice',  message);
+      setTimeout(done, 100);
+    });
+    it('fires listener', function() {
+      expect(room.messages).to.deep.equal([
+        ['alice', message],
+        ['hubot', "@alice I've opened issue mycompany/myproject#123 for you\nhttps://fake-github-url/some/path"]
+      ]);
+    });
+  });
 });

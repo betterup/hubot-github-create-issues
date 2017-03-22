@@ -37,6 +37,8 @@ module.exports = function(robot) {
 
   // parse message input into github issue payload
   parseIssue = function(message) {
+    // unescape Slack's "helpful" substitutions
+    message = message.replace(/—/g, '--').replace(/[“”]/g, '"');
     var args = parse(message);
     var parseOpts = {
       options: [
